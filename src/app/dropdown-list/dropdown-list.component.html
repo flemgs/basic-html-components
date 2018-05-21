@@ -1,0 +1,7 @@
+<div (click)="drop()" class="item selected-item">
+  Dropdown
+  <i class="fa fa-caret-down"></i>
+</div>
+<div [ngClass]="{'hide': hideDropdown}" class="dropdown-content">
+  <div *ngFor="let item of items" class="item list-item" (click)="onItemClicked()">{{ item }}</div>
+</div>

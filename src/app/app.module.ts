@@ -3,11 +3,17 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { VerticalListComponent } from './vertical-list/vertical-list.component';
+import { WidgetComponent } from './widget/widget.component';
+import { DropdownListComponent } from './dropdown-list/dropdown-list.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    VerticalListComponent,
+    WidgetComponent,
+    DropdownListComponent
   ],
   imports: [
     BrowserModule
