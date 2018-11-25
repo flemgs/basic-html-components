@@ -1,5 +1,5 @@
-<div class="title list-item">My List</div>
-<div class="list">
+<div class="title list-item" (click)="onClick()">My List</div>
+<div class="list" #list>
   <div class="list-item" *ngFor="let item of items">
     {{item}}
   </div>

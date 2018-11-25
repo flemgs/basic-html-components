@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { VerticalListComponent } from './vertical-list/vertical-list.component';
+import { VerticalListComponent, PopUpComponent } from './vertical-list/vertical-list.component';
 import { WidgetComponent } from './widget/widget.component';
 import { DropdownListComponent } from './dropdown-list/dropdown-list.component';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 
 @NgModule({
@@ -13,10 +14,15 @@ import { DropdownListComponent } from './dropdown-list/dropdown-list.component';
     AppComponent,
     VerticalListComponent,
     WidgetComponent,
-    DropdownListComponent
+    DropdownListComponent,
+    PopUpComponent
+  ],
+  entryComponents: [
+    PopUpComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    OverlayModule
   ],
   providers: [],
   bootstrap: [AppComponent]

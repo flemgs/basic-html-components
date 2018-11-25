@@ -2,6 +2,8 @@
   Dropdown
   <i class="fa fa-caret-down"></i>
 </div>
-<div [ngClass]="{'hide': hideDropdown}" class="dropdown-content">
-  <div *ngFor="let item of items" class="item list-item" (click)="onItemClicked()">{{ item }}</div>
+<div class="modal" [hidden]="hideDropdown" (click)="drop()">
+  <div class="dropdown-content" #dropdownContent>
+    <div *ngFor="let item of items" class="item list-item" (click)="onItemClicked()">{{ item }}</div>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { ElementRef } from '@angular/core';
 
@@ -12,6 +12,8 @@ export class DropdownListComponent implements OnInit {
   hideDropdown = true;
 
   items = ['Home', 'News', 'Contact', 'About', 'Support', 'Blog', 'Base', 'Custom', 'More', 'Logo', 'Friends'];
+
+  @ViewChild('dropdownContent') private dropDownContentElt: ElementRef;
 
   constructor(private elementRef: ElementRef) { }
 
@@ -27,9 +29,13 @@ export class DropdownListComponent implements OnInit {
 
   drop() {
     this.hideDropdown = !this.hideDropdown;
+    const rect = this.elementRef.nativeElement.getBoundingClientRect();
+    console.log(this.elementRef.nativeElement.getBoundingClientRect(), this.dropDownContentElt.nativeElement.getBoundingClientRect());
+    this.dropDownContentElt.nativeElement.style.transform = `translate(${rect.x}px, ${rect.y}px)`;
   }
 
   onItemClicked() {
     this.hideDropdown = true;
+    
   }
 }
