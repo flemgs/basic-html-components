@@ -8,10 +8,22 @@ import { OverlayRef } from '@angular/cdk/overlay/typings/overlay-ref';
 
 @Component({
   selector: 'pop-up',
-  template: '<div>coucou</div>',
-  styleUrls: []
+  template: 
+  `<div>
+    <span *ngFor="let item of items">{{item}}</span>
+  </div>`,
+  styles: [
+    `
+    div {
+      display: flex;
+      font-size: 35px;
+    }
+    `
+  ]
 })
 export class PopUpComponent {
+
+  items = ['Home', 'News', 'Contact', 'About', 'Support', 'Blog', 'Base', 'Custom', 'More', 'Logo', 'Friends'];
 }
 
 @Component({
@@ -36,13 +48,17 @@ export class VerticalListComponent implements OnInit {
   }
 
   onClick() {
-    const posStrategy = this.overlay.position().connectedTo(this.listRef, {originX: 'start', originY: 'center'}, {overlayX: 'start', overlayY: 'top'});
+    const posStrategy = this.overlay.position().flexibleConnectedTo(this.listRef).withPositions([{
+      originX: 'start',
+      originY: 'top',
+      overlayX: 'start',
+      overlayY: 'top'
+    }]).setOrigin(this.listRef);
     const overlayConfig = new OverlayConfig({
       // hasBackdrop: config.hasBackdrop,
       // scrollStrategy: this.overlay.scrollStrategies.block(),
       positionStrategy: posStrategy,
-      width: 600,
-      height: 600
+    
     });
     if (this.overlayRef) {
       this.overlayRef.dispose();
